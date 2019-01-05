@@ -8,16 +8,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.time.Instant;
 
-public class DeliveryJpaRepositoryImpl implements CustomDeliveryOperations {
+public class SaleJpaRepositoryImpl implements CustomSaleOperations {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     @Transactional
-    public void insertIntoDelivery(DeliveryDto deliveryDto) {
+    public void add(SaleDto saleDto) {
         Query query = entityManager.createNativeQuery(
-                "INSERT INTO `delivery`\n" +
+                "INSERT INTO `sale`\n" +
                         "    (\n" +
                         "     `product_id`,\n" +
                         "     `record_created_on`\n" +
@@ -26,16 +26,17 @@ public class DeliveryJpaRepositoryImpl implements CustomDeliveryOperations {
         );
 
         query
-                .setParameter(1, deliveryDto.getProduct().getId())
+                .setParameter(1, saleDto.getProduct().getId())
                 .setParameter(2, Instant.now())
                 .executeUpdate();
+
 
     }
 
     @Override
     @Transactional
-    public void deleteFromDelivery(@Param("id") int id) {
-        Query query = entityManager.createNativeQuery("DELETE FROM delivery WHERE id = :id");
+    public void delete(@Param("id") int id) {
+        Query query = entityManager.createNativeQuery("DELETE FROM sale WHERE id = :id");
         query
                 .setParameter("id", id)
                 .executeUpdate();
