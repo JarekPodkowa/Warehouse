@@ -1,6 +1,7 @@
 package com.podkowa.jarek.Warehouse.db.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,6 +23,7 @@ import java.time.Instant;
 @Table(name = "delivery")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Delivery {
 
     @Id

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ProductJpaRepository extends JpaRepository<Product, Integer>, CustomProductOperations {
 
-    List<ProductDto> findAllByIdIn(List<Integer> ids);
+    ProductDto findByIdIn(Integer id);
 }

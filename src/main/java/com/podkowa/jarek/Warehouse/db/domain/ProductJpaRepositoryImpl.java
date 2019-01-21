@@ -15,7 +15,7 @@ public class ProductJpaRepositoryImpl implements CustomProductOperations {
 
     @Override
     @Transactional
-    public void insertIntoProduct(ProductDto productDto) {
+    public void add(ProductDto productDto) {
         Query query = entityManager.createNativeQuery(
                 "INSERT into `product`\n" +
                         "    (\n" +
@@ -42,7 +42,7 @@ public class ProductJpaRepositoryImpl implements CustomProductOperations {
 
     @Override
     @Transactional
-    public void deleteFromProduct(@Param("id") int id) {
+    public void delete(@Param("id") int id) {
         Query query = entityManager.createNativeQuery( "DELETE FROM product WHERE id = :id");
         query
                 .setParameter("id", id)

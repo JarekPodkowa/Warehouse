@@ -27,7 +27,7 @@ class ProductServiceTest extends Specification {
         when:
             productService.add(productDto)
         then:
-            1 * repository.insertIntoProduct(productDto)
+            1 * repository.add(productDto)
             0 * _
     }
 
@@ -35,7 +35,7 @@ class ProductServiceTest extends Specification {
         when:
             productService.add(productDto)
         then:
-            1 * repository.insertIntoProduct(productDto) >> { throw new RuntimeException("Adding product failed") }
+            1 * repository.add(productDto) >> { throw new RuntimeException("Adding product failed") }
             thrown(AddProductException)
     }
 
@@ -43,7 +43,7 @@ class ProductServiceTest extends Specification {
         when:
             productService.delete(productDto.getId())
         then:
-            1 * repository.deleteFromProduct(productDto.getId())
+            1 * repository.delete(productDto.getId())
             0 * _
     }
 
@@ -51,7 +51,7 @@ class ProductServiceTest extends Specification {
         when:
             productService.delete(productDto.getId())
         then:
-            1 * repository.deleteFromProduct(productDto.getId()) >> {
+            1 * repository.delete(productDto.getId()) >> {
                 throw new RuntimeException("Delete product with id:" + productDto.getId() + " failed")
             }
             thrown(DeleteProductException)
