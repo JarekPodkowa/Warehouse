@@ -24,7 +24,7 @@ public class SaleService implements CustomSaleOperations {
             repository.add(saleDto);
             log.info("Sale with id: " + saleDto.getId() + " has been added!");
         } catch (Exception ex) {
-            throw new RuntimeException("Could not ad sale with id: " + saleDto.getId());
+            throw new AddSaleException("Could not ad sale with id: " + saleDto.getId());
         }
     }
 
@@ -34,7 +34,7 @@ public class SaleService implements CustomSaleOperations {
             repository.delete(id);
             log.info("Sale with id: " + id + "has been deleted!");
         } catch (Exception ex) {
-            throw new RuntimeException("Could not delete sale with id: " + id);
+            throw new DeleteSaleException("Could not delete sale with id: " + id);
         }
     }
 }

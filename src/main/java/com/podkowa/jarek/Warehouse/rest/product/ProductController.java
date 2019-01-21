@@ -23,11 +23,11 @@ public class ProductController {
 
     @PostMapping("/add")
     public void add(@RequestBody @Validated ProductDto productDto) {
-        productService.addProduct(productDto);
+        productService.add(productDto);
     }
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable int id) {
-        productService.deleteProduct(id);
+        productService.delete(id);
     }
 }
