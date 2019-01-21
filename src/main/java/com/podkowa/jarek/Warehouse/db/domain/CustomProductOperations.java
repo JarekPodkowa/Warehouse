@@ -2,7 +2,9 @@ package com.podkowa.jarek.Warehouse.db.domain;
 
 public interface CustomProductOperations {
 
-    void insertIntoProduct(ProductDto productDto);
+    void add(ProductDto productDto);
 
-    void deleteFromProduct(int id);
+    void delete(int id);
+
+    Product getById(int id);
 }

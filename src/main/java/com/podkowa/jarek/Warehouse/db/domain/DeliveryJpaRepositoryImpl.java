@@ -15,7 +15,7 @@ public class DeliveryJpaRepositoryImpl implements CustomDeliveryOperations {
 
     @Override
     @Transactional
-    public void insertIntoDelivery(DeliveryDto deliveryDto) {
+    public void add(DeliveryDto deliveryDto) {
         Query query = entityManager.createNativeQuery(
                 "INSERT INTO `delivery`\n" +
                         "    (\n" +
@@ -34,7 +34,7 @@ public class DeliveryJpaRepositoryImpl implements CustomDeliveryOperations {
 
     @Override
     @Transactional
-    public void deleteFromDelivery(@Param("id") int id) {
+    public void delete(@Param("id") int id) {
         Query query = entityManager.createNativeQuery("DELETE FROM delivery WHERE id = :id");
         query
                 .setParameter("id", id)

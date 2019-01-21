@@ -30,7 +30,7 @@ class DeliveryServiceSpec extends Specification {
         when:
             deliveryService.add(deliveryDto)
         then:
-            1 * repository.insertIntoDelivery(deliveryDto)
+            1 * repository.add(deliveryDto)
             0 * _
     }
 
@@ -38,7 +38,7 @@ class DeliveryServiceSpec extends Specification {
         when:
             deliveryService.add(deliveryDto)
         then:
-            1 * repository.insertIntoDelivery(deliveryDto) >> { throw new Exception("Example add exception") }
+            1 * repository.add(deliveryDto) >> { throw new Exception("Example add exception") }
             thrown(AddDeliveryException)
     }
 
@@ -46,7 +46,7 @@ class DeliveryServiceSpec extends Specification {
         when:
             deliveryService.delete(deliveryDto.getId())
         then:
-            1 * repository.deleteFromDelivery(deliveryDto.getId())
+            1 * repository.delete(deliveryDto.getId())
             0 * _
     }
 
@@ -54,7 +54,7 @@ class DeliveryServiceSpec extends Specification {
         when:
             deliveryService.delete(deliveryDto.getId())
         then:
-            1 * repository.deleteFromDelivery(deliveryDto.getId()) >> {
+            1 * repository.delete(deliveryDto.getId()) >> {
                 throw new Exception("Example delete exception")
             }
             thrown(DeleteDeliveryException)
