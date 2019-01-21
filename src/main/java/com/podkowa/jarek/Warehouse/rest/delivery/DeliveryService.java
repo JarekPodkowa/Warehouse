@@ -22,7 +22,7 @@ public class DeliveryService {
             repository.insertIntoDelivery(deliveryDto);
             log.info("Delivery with id: " + deliveryDto.getId() + "has been added!");
         } catch (Exception ex) {
-            throw new RuntimeException("Could not add delivery with id: " + deliveryDto.getId());
+            throw new AddDeliveryException("Could not add delivery with id: " + deliveryDto.getId());
         }
     }
 
@@ -31,7 +31,7 @@ public class DeliveryService {
             repository.deleteFromDelivery(id);
             log.info("Delivery with id: " + id + " has been deleted!");
         } catch (Exception ex) {
-            throw new RuntimeException("Could not delete delivery with id: " + id);
+            throw new DeleteDeliveryException("Could not delete delivery with id: " + id);
         }
     }
 }
