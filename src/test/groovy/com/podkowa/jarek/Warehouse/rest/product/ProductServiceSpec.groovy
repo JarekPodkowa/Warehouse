@@ -2,15 +2,23 @@ package com.podkowa.jarek.Warehouse.rest.product
 
 import com.podkowa.jarek.Warehouse.db.domain.ProductDto
 import com.podkowa.jarek.Warehouse.db.domain.ProductJpaRepository
+import com.podkowa.jarek.Warehouse.db.domain.facade.WarehouseFactoryFacade
+import com.podkowa.jarek.Warehouse.db.domain.factory.DeliveryFactory
+import com.podkowa.jarek.Warehouse.db.domain.factory.ProductFactory
+import com.podkowa.jarek.Warehouse.db.domain.factory.SaleFactory
 import spock.lang.Shared
 import spock.lang.Specification
 
 import java.time.Instant
 
-class ProductServiceTest extends Specification {
+class ProductServiceSpec extends Specification {
 
     ProductJpaRepository repository = Mock()
-    ProductService productService = new ProductService(repository)
+    DeliveryFactory deliveryFactory = new DeliveryFactory()
+    ProductFactory productFactory = new ProductFactory()
+    SaleFactory saleFactory = new SaleFactory()
+    WarehouseFactoryFacade facade = new WarehouseFactoryFacade(deliveryFactory, productFactory, saleFactory)
+    ProductService productService = new ProductService(repository, facade)
 
     @Shared
     def productDto = ProductDto.builder()
@@ -20,7 +28,7 @@ class ProductServiceTest extends Specification {
             .netPrice(new BigDecimal("120"))
             .grossPrice(new BigDecimal("147.6"))
             .quantity(2)
-            .createdOn(Instant.now())
+            .recordCreatedOn(Instant.now())
             .build()
 
     def 'should add new product'() {

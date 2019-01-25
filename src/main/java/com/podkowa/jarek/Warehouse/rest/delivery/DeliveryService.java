@@ -1,6 +1,5 @@
 package com.podkowa.jarek.Warehouse.rest.delivery;
 
-import com.podkowa.jarek.Warehouse.db.domain.CustomDeliveryOperations;
 import com.podkowa.jarek.Warehouse.db.domain.Delivery;
 import com.podkowa.jarek.Warehouse.db.domain.DeliveryDto;
 import com.podkowa.jarek.Warehouse.db.domain.DeliveryJpaRepository;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
-public class DeliveryService implements CustomDeliveryOperations {
+public class DeliveryService {
 
     private DeliveryJpaRepository repository;
     private WarehouseFactoryFacade warehouseFactoryFacade;
@@ -41,6 +40,6 @@ public class DeliveryService implements CustomDeliveryOperations {
     }
 
     public Delivery getById(int id) {
-        return warehouseFactoryFacade.toDelivery(repository.findById(id));
+        return warehouseFactoryFacade.toDelivery(repository.findByIdIn(id));
     }
 }

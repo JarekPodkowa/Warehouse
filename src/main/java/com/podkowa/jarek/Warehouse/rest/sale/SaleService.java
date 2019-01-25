@@ -1,6 +1,5 @@
 package com.podkowa.jarek.Warehouse.rest.sale;
 
-import com.podkowa.jarek.Warehouse.db.domain.CustomSaleOperations;
 import com.podkowa.jarek.Warehouse.db.domain.Sale;
 import com.podkowa.jarek.Warehouse.db.domain.SaleDto;
 import com.podkowa.jarek.Warehouse.db.domain.SaleJpaRepository;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
-public class SaleService implements CustomSaleOperations {
+public class SaleService {
 
     private SaleJpaRepository repository;
     private WarehouseFactoryFacade warehouseFactoryFacade;
@@ -22,7 +21,6 @@ public class SaleService implements CustomSaleOperations {
         this.warehouseFactoryFacade = warehouseFactoryFacade;
     }
 
-    @Override
     public void add(SaleDto saleDto) {
         try{
             repository.add(saleDto);
@@ -32,7 +30,6 @@ public class SaleService implements CustomSaleOperations {
         }
     }
 
-    @Override
     public void delete(int id) {
         try{
             repository.delete(id);
@@ -42,9 +39,8 @@ public class SaleService implements CustomSaleOperations {
         }
     }
 
-    @Override
     public Sale getById(int id) {
-        return warehouseFactoryFacade.toSale(repository.findById(id));
+        return warehouseFactoryFacade.toSale(repository.findByIdIn(id));
     }
 
 

@@ -14,7 +14,7 @@ public class ProductFactory {
                 .name(productDto.getName())
                 .grossPrice(productDto.getGrossPrice())
                 .quantity(productDto.getQuantity())
-                .recordCreatedOn(productDto.getCreatedOn())
+                .recordCreatedOn(productDto.getRecordCreatedOn())
                 .build();
     }
 }

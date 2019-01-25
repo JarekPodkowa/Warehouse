@@ -1,5 +1,6 @@
 package com.podkowa.jarek.Warehouse.db.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
@@ -8,6 +9,7 @@ import java.time.Instant;
 
 @Value
 @Builder
+@AllArgsConstructor
 public class ProductDto {
 
     private int id;
@@ -16,6 +18,6 @@ public class ProductDto {
     private BigDecimal netPrice;
     private BigDecimal grossPrice;
     private int quantity;
-    private Instant createdOn;
+    private Instant recordCreatedOn;
 
 }

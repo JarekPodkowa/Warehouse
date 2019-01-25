@@ -9,7 +9,7 @@ public class DeliveryFactory {
 
     public Delivery toDelivery(DeliveryDto deliveryDto) {
         return Delivery.builder()
-                .id(deliveryDto.getId()) //@TODO to delete because it is handled by database
+                .id(deliveryDto.getId())
                 .product(deliveryDto.getProduct())
                 .recordCreatedOn(deliveryDto.getRecordCreatedOn())
                 .build();

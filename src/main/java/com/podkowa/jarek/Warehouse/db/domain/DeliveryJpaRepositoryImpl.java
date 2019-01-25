@@ -40,4 +40,5 @@ public class DeliveryJpaRepositoryImpl implements CustomDeliveryOperations {
                 .setParameter("id", id)
                 .executeUpdate();
     }
+
 }
