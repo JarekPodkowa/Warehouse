@@ -3,6 +3,10 @@ package com.podkowa.jarek.Warehouse.rest.delivery
 import com.podkowa.jarek.Warehouse.db.domain.DeliveryDto
 import com.podkowa.jarek.Warehouse.db.domain.DeliveryJpaRepository
 import com.podkowa.jarek.Warehouse.db.domain.Product
+import com.podkowa.jarek.Warehouse.db.domain.facade.WarehouseFactoryFacade
+import com.podkowa.jarek.Warehouse.db.domain.factory.DeliveryFactory
+import com.podkowa.jarek.Warehouse.db.domain.factory.ProductFactory
+import com.podkowa.jarek.Warehouse.db.domain.factory.SaleFactory
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -11,7 +15,11 @@ import java.time.Instant
 class DeliveryServiceSpec extends Specification {
 
     DeliveryJpaRepository repository = Mock()
-    DeliveryService deliveryService = new DeliveryService(repository)
+    DeliveryFactory deliveryFactory = new DeliveryFactory()
+    ProductFactory productFactory = new ProductFactory()
+    SaleFactory saleFactory = new SaleFactory()
+    WarehouseFactoryFacade facade = new WarehouseFactoryFacade(deliveryFactory, productFactory, saleFactory)
+    DeliveryService deliveryService = new DeliveryService(repository, facade)
 
     @Shared
     def deliveryDto = DeliveryDto.builder()

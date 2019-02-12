@@ -33,8 +33,13 @@ public class ProductController {
         productService.delete(id);
     }
 
-    @GetMapping("/{id}")
-    public Product get(@PathVariable int id) {
-        return productService.getById(id);
+    @GetMapping("wholesale/{id}")
+    public Product getWholesale(@PathVariable int id) {
+        return productService.getWholesale(id);
+    }
+
+    @GetMapping("retail/{id}")
+    public Product getRetail(@PathVariable int id) {
+        return productService.getRetail(id);
     }
 }

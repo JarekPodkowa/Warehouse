@@ -1,8 +1,10 @@
 package com.podkowa.jarek.Warehouse.rest.sale;
 
+import com.podkowa.jarek.Warehouse.db.domain.Sale;
 import com.podkowa.jarek.Warehouse.db.domain.SaleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,5 +31,8 @@ public class SaleController {
     public void delete(@PathVariable int id) {
         saleService.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public Sale get(@PathVariable int id) { return saleService.getById(id);}
 }
 

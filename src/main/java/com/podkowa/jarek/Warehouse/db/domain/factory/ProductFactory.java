@@ -12,9 +12,10 @@ public class ProductFactory {
                 .id(productDto.getId())
                 .code(productDto.getCode())
                 .name(productDto.getName())
+                .netPrice(productDto.getNetPrice())
                 .grossPrice(productDto.getGrossPrice())
                 .quantity(productDto.getQuantity())
-                .recordCreatedOn(productDto.getCreatedOn())
+                .recordCreatedOn(productDto.getRecordCreatedOn())
                 .build();
     }
 }

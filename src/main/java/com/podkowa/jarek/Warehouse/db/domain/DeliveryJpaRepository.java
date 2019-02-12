@@ -4,6 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DeliveryJpaRepository extends JpaRepository<Delivery, Integer>, CustomDeliveryOperations {
 
-
-    DeliveryDto findById(int id);
+    DeliveryDto findByIdIn(int id);
 }

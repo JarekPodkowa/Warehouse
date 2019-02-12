@@ -6,5 +6,4 @@ public interface CustomSaleOperations {
 
     void delete(int id);
 
-    Sale getById(int id);
 }
